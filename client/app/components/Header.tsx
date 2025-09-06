@@ -17,9 +17,10 @@ interface HeaderProps {
   currentPath: string;
   notifications?: Notification[];
   onMarkAsRead?: (id: string) => void;
+  projectName?: string;
 }
 
-export default function Header({ currentPath, notifications = [], onMarkAsRead = () => {} }: HeaderProps) {
+export default function Header({ currentPath, notifications = [], onMarkAsRead = () => {}, projectName }: HeaderProps) {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -71,9 +72,21 @@ export default function Header({ currentPath, notifications = [], onMarkAsRead =
         {/* Current Path */}
         <div className="flex items-center space-x-2">
           <span className="text-sm text-gray-500">{'>'}</span>
-          <span className="text-sm font-medium text-gray-900 capitalize">
-            {currentPath.replace('/', '')}
-          </span>
+          {projectName ? (
+            <>
+              <a href="/projects" className="text-sm font-medium text-gray-900 hover:text-blue-600">
+                Projects
+              </a>
+              <span className="text-sm text-gray-500">{'>'}</span>
+              <span className="text-sm font-medium text-gray-900">
+                {projectName}
+              </span>
+            </>
+          ) : (
+            <span className="text-sm font-medium text-gray-900 capitalize">
+              {currentPath.replace('/', '')}
+            </span>
+          )}
         </div>
 
         {/* Search and Actions */}

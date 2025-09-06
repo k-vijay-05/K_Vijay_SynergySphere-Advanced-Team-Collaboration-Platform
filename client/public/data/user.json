@@ -1,0 +1,38 @@
+{
+  "id": "1",
+  "name": "Test User",
+  "email": "user@mail.com",
+  "avatar": "/api/placeholder/40/40",
+  "role": "Project Manager",
+  "department": "Engineering",
+  "joinDate": "2023-06-15",
+  "preferences": {
+    "theme": "light",
+    "notifications": {
+      "email": true,
+      "push": true,
+      "sms": false
+    },
+    "language": "en"
+  },
+  "recentActivity": [
+    {
+      "id": "1",
+      "action": "Created project",
+      "projectName": "RD Services",
+      "timestamp": "2024-02-01T10:00:00Z"
+    },
+    {
+      "id": "2",
+      "action": "Updated task",
+      "projectName": "RD Sales",
+      "timestamp": "2024-02-01T09:30:00Z"
+    },
+    {
+      "id": "3",
+      "action": "Commented on project",
+      "projectName": "Mobile App Redesign",
+      "timestamp": "2024-01-31T16:20:00Z"
+    }
+  ]
+}

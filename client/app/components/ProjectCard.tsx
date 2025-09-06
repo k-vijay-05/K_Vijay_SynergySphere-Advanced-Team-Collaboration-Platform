@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 interface Project {
   id: string;
@@ -30,6 +31,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, onEdit, onDelete }: ProjectCardProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -73,8 +75,15 @@ export default function ProjectCard({ project, onEdit, onDelete }: ProjectCardPr
     return 'text-green-600';
   };
 
+  const handleCardClick = () => {
+    router.push(`/tasks?project=${project.id}&projectName=${encodeURIComponent(project.title)}`);
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+    <div 
+      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden cursor-pointer"
+      onClick={handleCardClick}
+    >
       {/* Card Header */}
       <div className="p-4 pb-2">
         <div className="flex items-start justify-between">
@@ -93,7 +102,10 @@ export default function ProjectCard({ project, onEdit, onDelete }: ProjectCardPr
           {/* Menu Button */}
           <div className="relative">
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMenuOpen(!isMenuOpen);
+              }}
               className="p-1 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

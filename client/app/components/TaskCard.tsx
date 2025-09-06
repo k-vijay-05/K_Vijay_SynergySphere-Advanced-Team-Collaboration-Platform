@@ -62,18 +62,6 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
     }
   };
 
-  const getTagColor = (index: number) => {
-    const colors = [
-      'bg-blue-100 text-blue-800',
-      'bg-green-100 text-green-800',
-      'bg-purple-100 text-purple-800',
-      'bg-orange-100 text-orange-800',
-      'bg-pink-100 text-pink-800',
-      'bg-indigo-100 text-indigo-800'
-    ];
-    return colors[index % colors.length];
-  };
-
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-GB', {
@@ -94,19 +82,33 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
   const daysUntilDue = getDaysUntilDue(task.dueDate);
   const progressPercentage = (task.completedHours / task.estimatedHours) * 100;
 
+  const getTagColor = (index: number) => {
+    const colors = [
+      'bg-green-500 text-white',
+      'bg-red-500 text-white',
+      'bg-blue-500 text-white',
+      'bg-purple-500 text-white',
+      'bg-orange-500 text-white',
+      'bg-pink-500 text-white'
+    ];
+    return colors[index % colors.length];
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-200 overflow-hidden">
       {/* Card Header */}
       <div className="p-4 pb-2">
         <div className="flex items-start justify-between">
-          {/* Status Badge */}
-          <div className="flex items-center space-x-2">
-            <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border ${getStatusColor(task.status)}`}>
-              {task.status.replace('_', ' ').toUpperCase()}
-            </span>
-            <span className={`text-xs font-medium ${getPriorityColor(task.priority)}`}>
-              {task.priority.toUpperCase()} PRIORITY
-            </span>
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1">
+            {task.tags.slice(0, 2).map((tag, index) => (
+              <span
+                key={tag}
+                className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getTagColor(index)}`}
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
           {/* Menu Button */}
@@ -155,43 +157,24 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
         </div>
 
         {/* Task Title */}
-        <h3 className="text-lg font-semibold text-gray-900 mt-2 mb-2">
+        <h3 className="text-lg font-semibold text-gray-900 mt-3 mb-3">
           {task.title}
         </h3>
+      </div>
 
-        {/* Task Description */}
-        <p className="text-sm text-gray-600 mb-3 line-clamp-2">
-          {task.description}
-        </p>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
-          {task.tags.map((tag, index) => (
-            <span
-              key={tag}
-              className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getTagColor(index)}`}
-            >
-              {tag}
-            </span>
-          ))}
+      {/* Decorative Image */}
+      <div className="px-4 pb-4">
+        <div className="w-full h-32 bg-gradient-to-br from-purple-400 via-pink-400 to-purple-600 rounded-lg flex items-center justify-center">
+          <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+            </svg>
+          </div>
         </div>
       </div>
 
       {/* Task Details */}
       <div className="px-4 pb-4">
-        {/* Progress Bar */}
-        <div className="mb-3">
-          <div className="flex justify-between text-xs text-gray-600 mb-1">
-            <span>Progress</span>
-            <span>{task.completedHours}h / {task.estimatedHours}h</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${Math.min(progressPercentage, 100)}%` }}
-            ></div>
-          </div>
-        </div>
 
         {/* Due Date and Assignee */}
         <div className="flex items-center justify-between">
@@ -200,24 +183,17 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
             <span className="text-sm text-gray-600">
-              Due {formatDate(task.dueDate)}
-            </span>
-            <span className={`text-xs font-medium ${
-              daysUntilDue < 0 ? 'text-red-600' : 
-              daysUntilDue <= 3 ? 'text-yellow-600' : 
-              'text-green-600'
-            }`}>
-              ({daysUntilDue < 0 ? 'Overdue' : `${daysUntilDue}d left`})
+              {formatDate(task.dueDate)}
             </span>
           </div>
 
           <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
               {task.assignee.name.charAt(0).toUpperCase()}
             </div>
-            <span className="text-xs text-gray-800 font-medium truncate max-w-20">
-              {task.assignee.name}
-            </span>
+            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
           </div>
         </div>
 

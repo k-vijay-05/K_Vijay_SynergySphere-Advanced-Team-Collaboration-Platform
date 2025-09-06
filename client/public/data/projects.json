@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "title": "RD Services",
+    "tags": ["Services", "Customer Care"],
+    "image": "/api/placeholder/400/200",
+    "deadline": "2024-03-21",
+    "daysRemaining": 18,
+    "projectManager": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@company.com",
+      "avatar": "/api/placeholder/40/40"
+    },
+    "taskCount": 10,
+    "status": "active",
+    "description": "Research and Development services for customer care improvements",
+    "createdAt": "2024-01-15",
+    "updatedAt": "2024-02-03"
+  },
+  {
+    "id": "2",
+    "title": "RD Sales",
+    "tags": ["Sales", "Customer Care"],
+    "image": "/api/placeholder/400/200",
+    "deadline": "2024-04-15",
+    "daysRemaining": 43,
+    "projectManager": {
+      "name": "Mike Chen",
+      "email": "mike.chen@company.com",
+      "avatar": "/api/placeholder/40/40"
+    },
+    "taskCount": 15,
+    "status": "active",
+    "description": "Sales research and development initiatives",
+    "createdAt": "2024-01-20",
+    "updatedAt": "2024-02-01"
+  },
+  {
+    "id": "3",
+    "title": "RD Upgrade",
+    "tags": ["Upgrade", "Migration"],
+    "image": "/api/placeholder/400/200",
+    "deadline": "2024-05-30",
+    "daysRemaining": 88,
+    "projectManager": {
+      "name": "Emily Rodriguez",
+      "email": "emily.rodriguez@company.com",
+      "avatar": "/api/placeholder/40/40"
+    },
+    "taskCount": 8,
+    "status": "planning",
+    "description": "System upgrade and migration project",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-03"
+  },
+  {
+    "id": "4",
+    "title": "Mobile App Redesign",
+    "tags": ["Design", "Mobile"],
+    "image": "/api/placeholder/400/200",
+    "deadline": "2024-03-10",
+    "daysRemaining": 7,
+    "status": "urgent",
+    "projectManager": {
+      "name": "Alex Thompson",
+      "email": "alex.thompson@company.com",
+      "avatar": "/api/placeholder/40/40"
+    },
+    "taskCount": 22,
+    "description": "Complete redesign of mobile application interface",
+    "createdAt": "2024-01-10",
+    "updatedAt": "2024-02-02"
+  },
+  {
+    "id": "5",
+    "title": "API Integration",
+    "tags": ["Backend", "Integration"],
+    "image": "/api/placeholder/400/200",
+    "deadline": "2024-04-01",
+    "daysRemaining": 29,
+    "status": "active",
+    "projectManager": {
+      "name": "David Kim",
+      "email": "david.kim@company.com",
+      "avatar": "/api/placeholder/40/40"
+    },
+    "taskCount": 12,
+    "description": "Third-party API integration for payment processing",
+    "createdAt": "2024-01-25",
+    "updatedAt": "2024-02-01"
+  },
+  {
+    "id": "6",
+    "title": "Security Audit",
+    "tags": ["Security", "Compliance"],
+    "image": "/api/placeholder/400/200",
+    "deadline": "2024-06-15",
+    "daysRemaining": 104,
+    "status": "planning",
+    "projectManager": {
+      "name": "Lisa Wang",
+      "email": "lisa.wang@company.com",
+      "avatar": "/api/placeholder/40/40"
+    },
+    "taskCount": 18,
+    "description": "Comprehensive security audit and compliance review",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-03"
+  }
+]

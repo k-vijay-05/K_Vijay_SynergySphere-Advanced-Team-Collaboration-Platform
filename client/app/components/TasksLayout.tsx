@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import TaskCard from './TaskCard';
@@ -37,6 +38,10 @@ interface Notification {
 }
 
 export default function TasksLayout() {
+  const searchParams = useSearchParams();
+  const projectId = searchParams.get('project');
+  const projectName = searchParams.get('projectName');
+  
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -78,6 +83,11 @@ export default function TasksLayout() {
   useEffect(() => {
     let filtered = tasks;
 
+    // Project filter - if we're viewing a specific project
+    if (projectId) {
+      filtered = filtered.filter(task => task.projectId === projectId);
+    }
+
     // Search filter
     if (searchQuery.trim()) {
       filtered = filtered.filter(task =>
@@ -100,7 +110,7 @@ export default function TasksLayout() {
     }
 
     setFilteredTasks(filtered);
-  }, [tasks, searchQuery, statusFilter, priorityFilter]);
+  }, [tasks, searchQuery, statusFilter, priorityFilter, projectId]);
 
   const handleMarkAsRead = (notificationId: string) => {
     setNotifications(prev =>
@@ -173,6 +183,7 @@ export default function TasksLayout() {
           currentPath="/tasks"
           notifications={notifications}
           onMarkAsRead={handleMarkAsRead}
+          projectName={projectName}
         />
 
         {/* Tasks Content */}
@@ -180,9 +191,14 @@ export default function TasksLayout() {
           <div className="max-w-7xl mx-auto">
             {/* Page Title and Stats */}
             <div className="mb-6">
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">My Tasks</h1>
+              <h1 className="text-2xl font-bold text-orange-600 mb-2">
+                {projectName ? 'Tasks inside a Project View' : 'My Tasks'}
+              </h1>
               <p className="text-gray-600">
-                Manage and track all your assigned tasks
+                {projectName 
+                  ? `Manage and track tasks for ${projectName} project`
+                  : 'Manage and track all your assigned tasks'
+                }
               </p>
             </div>
 
@@ -248,6 +264,26 @@ export default function TasksLayout() {
               </div>
             </div>
 
+            {/* Action Buttons */}
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex items-center space-x-4">
+                {/* Three dots menu */}
+                <button className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg">
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                  </svg>
+                </button>
+              </div>
+              
+              {/* New Task Button */}
+              <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                + New Task
+              </button>
+            </div>
+
             {/* Tasks Grid */}
             {filteredTasks.length === 0 ? (
               <div className="text-center py-12">
@@ -270,7 +306,7 @@ export default function TasksLayout() {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredTasks.map((task) => (
                   <TaskCard
                     key={task.id}
