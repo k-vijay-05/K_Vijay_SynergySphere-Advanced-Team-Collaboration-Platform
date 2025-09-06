@@ -10,4 +10,14 @@ const pool = new Pool({
   ssl: process.env.DB_SSL === 'require' ? { rejectUnauthorized: false } : false,
 });
 
+// Test connection on startup
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error('❌ Database connection failed:', err.message);
+  } else {
+    console.log('✅ Database connected successfully');
+    release();
+  }
+});
+
 module.exports = pool;
