@@ -2,27 +2,26 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface FormData {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   password: string;
   agreeToTerms: boolean;
 }
 
 interface FormErrors {
-  firstName?: string;
-  lastName?: string;
+  name?: string;
   email?: string;
   password?: string;
   agreeToTerms?: string;
 }
 
 export default function SignupForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     password: '',
     agreeToTerms: false,
@@ -30,16 +29,13 @@ export default function SignupForm() {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string>('');
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'First name is required';
-    }
-
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = 'Last name is required';
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
     }
 
     if (!formData.email.trim()) {
@@ -86,14 +82,36 @@ export default function SignupForm() {
     }
 
     setIsSubmitting(true);
+    setSubmitError('');
     
-    // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Form submitted:', formData);
-      // Handle successful signup here
+      const response = await fetch('http://localhost:3000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Successful signup
+        console.log('Signup successful:', data);
+        // Redirect to projects page
+        router.push('/projects');
+      } else {
+        // Handle API errors
+        setSubmitError(data.message || 'Signup failed. Please try again.');
+        console.error('Signup error:', data);
+      }
     } catch (error) {
       console.error('Signup error:', error);
+      setSubmitError('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -119,47 +137,31 @@ export default function SignupForm() {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Fields */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                  First name
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
-                    errors.firstName ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Enter your first name"
-                />
-                {errors.firstName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
-                )}
+            {/* Submit Error */}
+            {submitError && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                <p className="text-sm text-red-600">{submitError}</p>
               </div>
-
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Last name
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
-                    errors.lastName ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="Enter your last name"
-                />
-                {errors.lastName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
-                )}
-              </div>
+            )}
+            {/* Name Field */}
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                Full name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+                  errors.name ? 'border-red-500' : 'border-gray-300'
+                }`}
+                placeholder="Enter your full name"
+              />
+              {errors.name && (
+                <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+              )}
             </div>
 
             {/* Email Field */}
