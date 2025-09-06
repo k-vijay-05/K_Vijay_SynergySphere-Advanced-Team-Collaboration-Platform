@@ -114,8 +114,7 @@ export default function ProjectsLayout() {
   };
 
   const handleEditProject = (project: Project) => {
-    console.log('Edit project:', project);
-    // In a real app, this would open an edit modal or navigate to edit page
+    window.location.href = `/projects/edit/${project.id}`;
   };
 
   const handleDeleteProject = (projectId: string) => {
@@ -126,8 +125,7 @@ export default function ProjectsLayout() {
   };
 
   const handleNewProject = () => {
-    console.log('Create new project');
-    // In a real app, this would open a create project modal or navigate to create page
+    window.location.href = '/projects/new';
   };
 
   if (isLoading) {
