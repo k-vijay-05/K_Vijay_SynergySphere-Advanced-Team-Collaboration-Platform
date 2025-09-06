@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   const getIcon = (iconName: string) => {
-    const iconClass = "h-5 w-5 text-gray-400 hover:text-blue-600 transition-colors duration-200";
+    const iconClass = "h-5 w-5 text-gray-300 hover:text-white transition-colors duration-200";
     
     switch (iconName) {
       case 'twitter':
@@ -60,19 +60,19 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Company Banner */}
+          {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold mb-4">SynergySphere</h3>
-              <p className="text-blue-100 text-sm leading-relaxed">
+            <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-6 text-center">
+              <h3 className="text-xl font-bold mb-3">SynergySphere</h3>
+              <p className="text-blue-100 text-sm">
                 Empowering teams to collaborate seamlessly and achieve extraordinary results together.
               </p>
-              <div className="mt-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-white bg-opacity-20 rounded-full">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mt-4">
+                <div className="inline-flex items-center justify-center w-10 h-10 bg-white bg-opacity-20 rounded-full">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -81,14 +81,14 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-1">
-            <h4 className="text-lg font-semibold mb-6 text-gray-100">Quick Links</h4>
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-white">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -98,14 +98,14 @@ export default function Footer() {
           </div>
 
           {/* Company */}
-          <div className="lg:col-span-1">
-            <h4 className="text-lg font-semibold mb-6 text-gray-100">Company</h4>
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-white">Company</h4>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                    className="text-gray-300 hover:text-white text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -114,9 +114,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Connect with us */}
-          <div className="lg:col-span-1">
-            <h4 className="text-lg font-semibold mb-6 text-gray-100">Connect with us</h4>
+          {/* Connect */}
+          <div>
+            <h4 className="text-lg font-semibold mb-6 text-white">Connect with us</h4>
             <div className="flex space-x-4 mb-6">
               {socialLinks.map((link) => (
                 <a
@@ -133,15 +133,15 @@ export default function Footer() {
             </div>
             
             {/* Newsletter Signup */}
-            <div className="mt-6">
-              <h5 className="text-sm font-medium text-gray-100 mb-3">Stay updated</h5>
+            <div>
+              <h5 className="text-sm font-medium text-white mb-3">Stay updated</h5>
               <div className="flex">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-lg text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-md text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-r-lg transition-colors duration-200">
+                <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-r-md transition-colors duration-200">
                   Subscribe
                 </button>
               </div>
@@ -150,11 +150,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-8 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 SynergySphere. All rights reserved.
-            </p>
+            <p className="text-gray-400 text-sm">© 2024 SynergySphere. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
                 Privacy
