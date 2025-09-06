@@ -1,5 +1,6 @@
 const UserModel = require('../models/user.model');
 const RefreshTokenModel = require('../models/refreshToken.model');
+const MailService = require('../services/mail.service');
 const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = require('../utils/jwt');
 const crypto = require('crypto');
 
@@ -19,6 +20,14 @@ class AuthController {
 
       // Create user
       const user = await UserModel.create({ email, password, name });
+
+      // Send welcome email
+      const welcomeEmailResult = await MailService.sendWelcomeEmail(email, name);
+      if (welcomeEmailResult.success) {
+        console.log(`✅ Welcome email sent to ${email}`);
+      } else {
+        console.error(`❌ Failed to send welcome email to ${email}:`, welcomeEmailResult.error);
+      }
 
       // Generate tokens
       const accessToken = generateAccessToken({ sub: user.id, email: user.email });
@@ -221,8 +230,16 @@ class AuthController {
 
       await UserModel.setPasswordResetToken(email, resetToken, expiresAt);
 
-      // TODO: Send email with reset token
-      console.log(`Password reset token for ${email}: ${resetToken}`);
+      // Send password reset email
+      const emailResult = await MailService.sendPasswordResetEmail(email, resetToken, user.name);
+      
+      if (emailResult.success) {
+        console.log(`✅ Password reset email sent to ${email}`);
+      } else {
+        console.error(`❌ Failed to send password reset email to ${email}:`, emailResult.error);
+        // Still log to console as fallback
+        console.log(`Password reset token for ${email}: ${resetToken}`);
+      }
 
       res.json({
         success: true,
