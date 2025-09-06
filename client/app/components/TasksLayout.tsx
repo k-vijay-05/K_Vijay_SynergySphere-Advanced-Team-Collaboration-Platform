@@ -25,6 +25,7 @@ interface Task {
   tags: string[];
   estimatedHours: number;
   completedHours: number;
+  image: string;
 }
 
 interface Notification {

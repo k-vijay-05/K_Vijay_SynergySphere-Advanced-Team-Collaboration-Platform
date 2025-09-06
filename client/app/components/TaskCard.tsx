@@ -22,6 +22,7 @@ interface Task {
   tags: string[];
   estimatedHours: number;
   completedHours: number;
+  image: string;
 }
 
 interface TaskCardProps {
@@ -162,13 +163,25 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
         </h3>
       </div>
 
-      {/* Decorative Image */}
+      {/* Task Image */}
       <div className="px-4 pb-4">
-        <div className="w-full h-32 bg-gradient-to-br from-purple-400 via-pink-400 to-purple-600 rounded-lg flex items-center justify-center">
-          <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-            </svg>
+        <div className="w-full h-32 rounded-lg overflow-hidden">
+          <img 
+            src={task.image} 
+            alt={task.title}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              // Fallback to gradient if image fails to load
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.nextElementSibling.style.display = 'flex';
+            }}
+          />
+          <div className="w-full h-full bg-gradient-to-br from-purple-400 via-pink-400 to-purple-600 rounded-lg flex items-center justify-center" style={{display: 'none'}}>
+            <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>

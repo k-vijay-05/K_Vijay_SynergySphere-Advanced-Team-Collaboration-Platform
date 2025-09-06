@@ -17,7 +17,8 @@
     "updatedAt": "2024-02-03",
     "tags": ["Design", "UI/UX"],
     "estimatedHours": 8,
-    "completedHours": 5
+    "completedHours": 5,
+    "image": "https://images.unsplash.com/photo-1558655146-d09347e92766?w=400&h=200&fit=crop"
   },
   {
     "id": "2",
@@ -37,7 +38,8 @@
     "updatedAt": "2024-02-28",
     "tags": ["Backend", "Security"],
     "estimatedHours": 12,
-    "completedHours": 12
+    "completedHours": 12,
+    "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=200&fit=crop"
   },
   {
     "id": "3",
@@ -57,7 +59,8 @@
     "updatedAt": "2024-02-01",
     "tags": ["Database", "Migration"],
     "estimatedHours": 16,
-    "completedHours": 0
+    "completedHours": 0,
+    "image": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=200&fit=crop"
   },
   {
     "id": "4",
@@ -77,7 +80,8 @@
     "updatedAt": "2024-02-02",
     "tags": ["Documentation", "API"],
     "estimatedHours": 6,
-    "completedHours": 3
+    "completedHours": 3,
+    "image": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=200&fit=crop"
   },
   {
     "id": "5",
@@ -97,7 +101,8 @@
     "updatedAt": "2024-02-03",
     "tags": ["Testing", "Mobile"],
     "estimatedHours": 10,
-    "completedHours": 7
+    "completedHours": 7,
+    "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=200&fit=crop"
   },
   {
     "id": "6",
@@ -117,7 +122,8 @@
     "updatedAt": "2024-02-01",
     "tags": ["Security", "Audit"],
     "estimatedHours": 20,
-    "completedHours": 0
+    "completedHours": 0,
+    "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=200&fit=crop"
   },
   {
     "id": "7",
@@ -137,7 +143,8 @@
     "updatedAt": "2024-02-03",
     "tags": ["Performance", "Optimization"],
     "estimatedHours": 8,
-    "completedHours": 2
+    "completedHours": 2,
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop"
   },
   {
     "id": "8",
@@ -157,7 +164,8 @@
     "updatedAt": "2024-02-01",
     "tags": ["Training", "Documentation"],
     "estimatedHours": 4,
-    "completedHours": 0
+    "completedHours": 0,
+    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=200&fit=crop"
   },
   {
     "id": "9",
@@ -177,7 +185,8 @@
     "updatedAt": "2024-02-01",
     "tags": ["Feedback", "Refactor"],
     "estimatedHours": 8,
-    "completedHours": 3
+    "completedHours": 3,
+    "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=200&fit=crop"
   },
   {
     "id": "10",
@@ -197,7 +206,8 @@
     "updatedAt": "2024-02-01",
     "tags": ["Feedback", "Delete"],
     "estimatedHours": 4,
-    "completedHours": 0
+    "completedHours": 0,
+    "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=200&fit=crop"
   },
   {
     "id": "11",
@@ -217,6 +227,7 @@
     "updatedAt": "2024-02-01",
     "tags": ["Improvement", "Payment Provider"],
     "estimatedHours": 12,
-    "completedHours": 6
+    "completedHours": 6,
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=200&fit=crop"
   }
 ]
