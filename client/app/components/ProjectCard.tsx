@@ -179,14 +179,10 @@ export default function ProjectCard({ project, onEdit, onDelete }: ProjectCardPr
         <div className="flex items-center justify-between">
           {/* Project Manager */}
           <div className="flex items-center space-x-2">
-            <Image
-              src={project.projectManager.avatar}
-              alt={project.projectManager.name}
-              width={24}
-              height={24}
-              className="rounded-full"
-            />
-            <span className="text-xs text-gray-600 truncate max-w-20">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+              {project.projectManager.name.charAt(0).toUpperCase()}
+            </div>
+            <span className="text-xs text-gray-800 font-medium truncate max-w-20">
               {project.projectManager.name}
             </span>
           </div>

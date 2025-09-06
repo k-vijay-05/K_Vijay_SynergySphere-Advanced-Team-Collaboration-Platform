@@ -99,7 +99,7 @@ export default function Sidebar({ isCollapsed, onToggle, currentPath }: SidebarP
       {/* Theme Toggle */}
       <div className="p-4 border-t border-gray-700">
         <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
-          {!isCollapsed && <span className="text-sm text-gray-400">Theme</span>}
+          {!isCollapsed && <span className="text-sm text-gray-300">Theme</span>}
           <div className="flex items-center space-x-2">
             <button
               onClick={toggleTheme}
@@ -131,19 +131,15 @@ export default function Sidebar({ isCollapsed, onToggle, currentPath }: SidebarP
       <div className="p-4 border-t border-gray-700">
         <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'space-x-3'}`}>
           <div className="relative">
-            <Image
-              src="/api/placeholder/40/40"
-              alt="User avatar"
-              width={40}
-              height={40}
-              className="rounded-full"
-            />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white text-lg font-bold">
+              TU
+            </div>
             <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 border-2 border-gray-900 rounded-full"></div>
           </div>
           {!isCollapsed && (
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">Test User</p>
-              <p className="text-xs text-gray-400 truncate">user@mail.com</p>
+              <p className="text-xs text-gray-300 truncate">user@mail.com</p>
             </div>
           )}
           {!isCollapsed && (

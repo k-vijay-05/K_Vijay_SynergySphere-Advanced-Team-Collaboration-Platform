@@ -152,7 +152,7 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
     <div className="max-w-4xl mx-auto">
       {/* Breadcrumbs */}
       <nav className="mb-6">
-        <ol className="flex items-center space-x-2 text-sm text-gray-500">
+        <ol className="flex items-center space-x-2 text-sm text-gray-600">
           <li>
             <a href="/projects" className="hover:text-gray-700">
               Projects
@@ -199,7 +199,7 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
               id="name"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-600 text-gray-900 ${
                 errors.name ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="Enter project name"
@@ -240,7 +240,7 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
                   value={tagInput}
                   onChange={(e) => setTagInput(e.target.value)}
                   onFocus={() => setShowTagsDropdown(true)}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-600 text-gray-900 ${
                     errors.tags ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Add tags..."
@@ -257,7 +257,7 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
                           key={tag}
                           type="button"
                           onClick={() => handleTagAdd(tag)}
-                          className="w-full px-4 py-2 text-left hover:bg-gray-100 text-sm"
+                          className="w-full px-4 py-3 text-left hover:bg-blue-50 text-sm text-gray-800 font-medium border-b border-gray-100 last:border-b-0"
                         >
                           {tag}
                         </button>
@@ -286,17 +286,13 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
               >
                 {formData.projectManager ? (
                   <div className="flex items-center space-x-3">
-                    <Image
-                      src={formData.projectManager.avatar}
-                      alt={formData.projectManager.name}
-                      width={24}
-                      height={24}
-                      className="rounded-full"
-                    />
-                    <span>{formData.projectManager.name}</span>
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                      {formData.projectManager.name.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-gray-800 font-medium">{formData.projectManager.name}</span>
                   </div>
                 ) : (
-                  <span className="text-gray-500">Select project manager</span>
+                  <span className="text-gray-600">Select project manager</span>
                 )}
               </button>
               {showManagersDropdown && (
@@ -308,16 +304,12 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
                       onClick={() => handleManagerSelect(manager)}
                       className="w-full px-4 py-3 text-left hover:bg-gray-100 flex items-center space-x-3"
                     >
-                      <Image
-                        src={manager.avatar}
-                        alt={manager.name}
-                        width={24}
-                        height={24}
-                        className="rounded-full"
-                      />
+                      <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold">
+                        {manager.name.charAt(0).toUpperCase()}
+                      </div>
                       <div>
-                        <div className="font-medium">{manager.name}</div>
-                        <div className="text-sm text-gray-500">{manager.email}</div>
+                        <div className="font-medium text-gray-800">{manager.name}</div>
+                        <div className="text-sm text-gray-600">{manager.email}</div>
                       </div>
                     </button>
                   ))}
@@ -340,7 +332,7 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
               value={formData.deadline}
               onChange={(e) => handleInputChange('deadline', e.target.value)}
               min={new Date().toISOString().split('T')[0]}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 ${
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 placeholder-gray-600 text-gray-900 ${
                 errors.deadline ? 'border-red-500' : 'border-gray-300'
               }`}
             />
@@ -434,7 +426,7 @@ export default function ProjectForm({ initialData, onSave, onDiscard, isEditing 
               rows={6}
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none ${
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none placeholder-gray-600 text-gray-900 ${
                 errors.description ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="Enter project description..."

@@ -212,21 +212,17 @@ export default function TaskCard({ task, onEdit, onDelete, onStatusChange }: Tas
           </div>
 
           <div className="flex items-center space-x-2">
-            <Image
-              src={task.assignee.avatar}
-              alt={task.assignee.name}
-              width={24}
-              height={24}
-              className="rounded-full"
-            />
-            <span className="text-xs text-gray-600 truncate max-w-20">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
+              {task.assignee.name.charAt(0).toUpperCase()}
+            </div>
+            <span className="text-xs text-gray-800 font-medium truncate max-w-20">
               {task.assignee.name}
             </span>
           </div>
         </div>
 
         {/* Project Name */}
-        <div className="mt-2 text-xs text-gray-500">
+        <div className="mt-2 text-xs text-gray-700 font-medium">
           Project: {task.projectName}
         </div>
       </div>
