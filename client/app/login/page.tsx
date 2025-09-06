@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 export default function LoginPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header currentPath="/login" />
       <main className="flex-1">
         <LoginForm />
       </main>

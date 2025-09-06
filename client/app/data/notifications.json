@@ -1,0 +1,56 @@
+[
+  {
+    "id": "1",
+    "title": "Project Deadline Approaching",
+    "message": "RD Services project deadline is in 3 days",
+    "type": "warning",
+    "isRead": false,
+    "createdAt": "2024-02-01T10:30:00Z",
+    "projectId": "1"
+  },
+  {
+    "id": "2",
+    "title": "New Team Member Added",
+    "message": "John Smith has been added to RD Sales project",
+    "type": "info",
+    "isRead": false,
+    "createdAt": "2024-02-01T09:15:00Z",
+    "projectId": "2"
+  },
+  {
+    "id": "3",
+    "title": "Task Completed",
+    "message": "API documentation task has been completed",
+    "type": "success",
+    "isRead": true,
+    "createdAt": "2024-01-31T16:45:00Z",
+    "projectId": "5"
+  },
+  {
+    "id": "4",
+    "title": "Meeting Reminder",
+    "message": "Project review meeting in 30 minutes",
+    "type": "reminder",
+    "isRead": false,
+    "createdAt": "2024-02-01T11:00:00Z",
+    "projectId": null
+  },
+  {
+    "id": "5",
+    "title": "Budget Approval Required",
+    "message": "RD Upgrade project budget needs approval",
+    "type": "urgent",
+    "isRead": false,
+    "createdAt": "2024-02-01T08:20:00Z",
+    "projectId": "3"
+  },
+  {
+    "id": "6",
+    "title": "System Maintenance",
+    "message": "Scheduled maintenance will occur tonight at 2 AM",
+    "type": "info",
+    "isRead": true,
+    "createdAt": "2024-01-31T14:30:00Z",
+    "projectId": null
+  }
+]

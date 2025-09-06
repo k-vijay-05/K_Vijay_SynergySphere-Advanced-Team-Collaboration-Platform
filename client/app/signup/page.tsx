@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 export default function SignupPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Header currentPath="/signup" />
       <main className="flex-1">
         <SignupForm />
       </main>

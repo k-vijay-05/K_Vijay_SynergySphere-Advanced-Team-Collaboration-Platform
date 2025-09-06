@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1",
+    "title": "Design User Interface",
+    "description": "Create wireframes and mockups for the new user interface",
+    "projectId": "1",
+    "projectName": "RD Services",
+    "assignee": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "in_progress",
+    "priority": "high",
+    "dueDate": "2024-03-15",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-03",
+    "tags": ["Design", "UI/UX"],
+    "estimatedHours": 8,
+    "completedHours": 5
+  },
+  {
+    "id": "2",
+    "title": "Implement Authentication",
+    "description": "Set up user authentication and authorization system",
+    "projectId": "1",
+    "projectName": "RD Services",
+    "assignee": {
+      "name": "Mike Chen",
+      "email": "mike.chen@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "completed",
+    "priority": "high",
+    "dueDate": "2024-02-28",
+    "createdAt": "2024-01-20",
+    "updatedAt": "2024-02-28",
+    "tags": ["Backend", "Security"],
+    "estimatedHours": 12,
+    "completedHours": 12
+  },
+  {
+    "id": "3",
+    "title": "Database Migration",
+    "description": "Migrate existing data to new database schema",
+    "projectId": "2",
+    "projectName": "RD Sales",
+    "assignee": {
+      "name": "Emily Rodriguez",
+      "email": "emily.rodriguez@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "pending",
+    "priority": "medium",
+    "dueDate": "2024-04-10",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-01",
+    "tags": ["Database", "Migration"],
+    "estimatedHours": 16,
+    "completedHours": 0
+  },
+  {
+    "id": "4",
+    "title": "API Documentation",
+    "description": "Write comprehensive API documentation for developers",
+    "projectId": "5",
+    "projectName": "API Integration",
+    "assignee": {
+      "name": "David Kim",
+      "email": "david.kim@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "in_progress",
+    "priority": "medium",
+    "dueDate": "2024-03-20",
+    "createdAt": "2024-01-25",
+    "updatedAt": "2024-02-02",
+    "tags": ["Documentation", "API"],
+    "estimatedHours": 6,
+    "completedHours": 3
+  },
+  {
+    "id": "5",
+    "title": "Mobile App Testing",
+    "description": "Conduct comprehensive testing on mobile devices",
+    "projectId": "4",
+    "projectName": "Mobile App Redesign",
+    "assignee": {
+      "name": "Alex Thompson",
+      "email": "alex.thompson@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "urgent",
+    "priority": "high",
+    "dueDate": "2024-03-05",
+    "createdAt": "2024-01-10",
+    "updatedAt": "2024-02-03",
+    "tags": ["Testing", "Mobile"],
+    "estimatedHours": 10,
+    "completedHours": 7
+  },
+  {
+    "id": "6",
+    "title": "Security Audit",
+    "description": "Perform security audit and vulnerability assessment",
+    "projectId": "6",
+    "projectName": "Security Audit",
+    "assignee": {
+      "name": "Lisa Wang",
+      "email": "lisa.wang@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "pending",
+    "priority": "high",
+    "dueDate": "2024-06-01",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-01",
+    "tags": ["Security", "Audit"],
+    "estimatedHours": 20,
+    "completedHours": 0
+  },
+  {
+    "id": "7",
+    "title": "Performance Optimization",
+    "description": "Optimize application performance and loading times",
+    "projectId": "1",
+    "projectName": "RD Services",
+    "assignee": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "in_progress",
+    "priority": "medium",
+    "dueDate": "2024-03-25",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-03",
+    "tags": ["Performance", "Optimization"],
+    "estimatedHours": 8,
+    "completedHours": 2
+  },
+  {
+    "id": "8",
+    "title": "User Training Materials",
+    "description": "Create training materials and user guides",
+    "projectId": "2",
+    "projectName": "RD Sales",
+    "assignee": {
+      "name": "Mike Chen",
+      "email": "mike.chen@company.com",
+      "avatar": "/api/placeholder/32/32"
+    },
+    "status": "pending",
+    "priority": "low",
+    "dueDate": "2024-04-30",
+    "createdAt": "2024-02-01",
+    "updatedAt": "2024-02-01",
+    "tags": ["Training", "Documentation"],
+    "estimatedHours": 4,
+    "completedHours": 0
+  }
+]
